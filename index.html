@@ -7,7 +7,36 @@
     <title>Vite + React</title>
   </head>
   <body>
-    <saytv-chat maxHeight="50" maxWidth="40"></saytv-chat>
+   <button
+      style="background-color: royalblue; padding: 10px 10px; margin: 10px"
+      id="toggleButton"
+    >
+      Toggle Me!
+    </button>
+    <div class="flex justify-end">
+      <saytv-chat maxHeight="50" maxWidth="30" bubble="true"></saytv-chat>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("toggleButton");
+        const status = document.getElementById("status");
+
+        let isOn = true;
+
+        button.addEventListener("click", () => {
+          isOn = !isOn;
+          if (isOn) {
+            // button.classList.add('active');
+            button.textContent = "The Bubble is ON";
+            document.querySelector("saytv-chat").setAttribute("bubble", true);
+          } else {
+            // button.classList.remove('active');
+            button.textContent = "The Bubble is OFF";
+            document.querySelector("saytv-chat").setAttribute("bubble", false);
+          }
+        });
+      });
+    </script>
     
     <script type="module" src="https://shiva2641998.github.io/shadow-chat-bundle/shadow-chat.js"></script>
   </body>
