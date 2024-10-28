@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet"> -->
+  </head>
+  <body
+    style="
+      background-color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: start;
+    "
+  >
+    <button
+      style="background-color: royalblue; padding: 10px 10px; margin: 10px"
+      id="toggleButton"
+    >
+      Toggle Me!
+    </button>
+    <div class="w-full" style="height: 30%">
+      <shadow-chat
+        apiurl="https://chat-app-backend-2miw.onrender.com/api"
+        height="70"
+        width="30"
+        bubble="true"
+        authentication="false"
+        accesstoken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFmZGI5YTM1ZGYyZGUwZjVmYjQzNmQiLCJ1c2VyTmFtZSI6Imd2Z3YiLCJpYXQiOjE3MzAxNDEwODIsImV4cCI6MTczMDIyNzQ4Mn0.qLOxOumbz88MmaOyoO1r-eftULRIWwLAUOsEpZNXY08"
+        ></shadow-chat>
+        <!-- accesstoken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ5NmQ0Njk5OThkY2FhNmUwYjNhNDYiLCJ1c2VyTmFtZSI6InNoaXZhbSIsImlhdCI6MTcyODM2NTUwOCwiZXhwIjoxNzI4NDUxOTA4fQ.IY1-JQtu23RkGEy7IY6rlF3wukFw2AqpFoLmIOQzAhc" -->
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("toggleButton");
+        const status = document.getElementById("status");
+
+        let isOn = true;
+
+        button.addEventListener("click", () => {
+          isOn = !isOn;
+          if (isOn) {
+            // button.classList.add('active');
+            button.textContent = "The Bubble is ON";
+            document.querySelector("saytv-chat").setAttribute("bubble", true);
+          } else {
+            // button.classList.remove('active');
+            button.textContent = "The Bubble is OFF";
+            document.querySelector("saytv-chat").setAttribute("bubble", false);
+          }
+        });
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+    <!-- <script type="module" src="https://shiva2641998.github.io/shadow-chat-bundle/shadow-chat.js"></script> -->
+  </body>
+</html>
